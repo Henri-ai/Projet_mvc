@@ -16,6 +16,11 @@
                 </div>
             </div>
         </div>
+        <div class="note text-white py-5">
+            <h2 class="text-center  py-5 bg-dark rounded">Vous l'avez deja vu ?</h2>
+            <p class="py-5 fs-3">notez +NOM DU FILM+ /5 </p>
+            
+        </div>
         <div class="col bg-dark rounded p-5">
             <h2 class="text-white">Synopsis</h2>
             <p class="text-white">
@@ -28,14 +33,9 @@
                 Donec arcu tellus, semper vel neque vel, porta condimentum ante.
             </p>
         </div>
-        <div class="note text-white py-5">
-            <h2 class="text-center  py-5 bg-dark rounded">Vous l'avez deja vu ?</h2>
-            <p class="py-5 fs-3">notez +NOM DU FILM+ /5 </p>
-            
-        </div>
+        
         <h2 class="text-white py-5 text-center bg-dark rounded">Laissez nous un commentaire !</h2>
         <form class="py-5">
-            <p class="text-white fs-4 ">pseudo User : (quand l'user a poster)</p>
             <div class="form-floating">
                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                 <label for="floatingTextarea">Comments</label>

@@ -11,7 +11,7 @@
 }
 
 .screenImg{
-        background-image: url("../img/sl_121019_25870_78.jpg");
+        background-image: url("../img/screen.jpg");
         height: 100vh;
         width: 100%;
         object-fit: contain;
@@ -63,4 +63,11 @@ footer {
     background-color: #212529;
 }
 
+.error{
+    color:red;
+}
+
+.errorField{
+    border: 1px solid red;
+}
 
