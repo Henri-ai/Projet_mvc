@@ -6,13 +6,13 @@
                 <form method="post" novalidate>
                     <div class="mb-3">
                         <label for="email" class="form-label text-white">Adresse mail :</label>
-                        <input type="email" name="email" class="form-control <?= isset($error['email']) ? 'errorField' : '' ?>" id="email" aria-describedby="email" value="<?= $email ?? '' ?>" require>                                                                                                       
+                        <input type="email" name="email" class="form-control <?= isset($error['email']) ? 'errorField' : '' ?>" id="email" aria-describedby="email" value="<?= $email ?? '' ?>" required>                                                                                                       
                         <small id="emailError" class="form-text error"><?= $error['email'] ?? '' ?></small> 
                     </div>
-                    </div>
+                    
                     <div class="mb-3">
                         <label for="password" class="form-label text-white">Mot de passe :</label>
-                        <input type="password" name="password" class="form-control <?= isset($error['email']) ? 'errorField' : '' ?>" id="password" aria-describedby="password" value="<?= $password ?? '' ?>" require>
+                        <input type="password" name="password" class="form-control <?= isset($error['email']) ? 'errorField' : '' ?>" id="password" aria-describedby="password" value="<?= $password ?? '' ?>" required>
                         <small id="passwordError" class="form-text error"><?=$error['password'] ?? ''//coalescence si $error existe on l'affiche sinon ''(vide)?></small>
                     </div>
                     <div class="btnLogin">

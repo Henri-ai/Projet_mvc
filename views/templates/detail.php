@@ -17,9 +17,19 @@
             </div>
         </div>
         <div class="note text-white py-5">
-            <h2 class="text-center  py-5 bg-dark rounded">Vous l'avez deja vu ?</h2>
-            <p class="py-5 fs-3">notez +NOM DU FILM+ /5 </p>
-            
+            <h2 class="text-center py-5 bg-dark rounded">Vous l'avez deja vu ?</h2>
+                <div class="row">
+                    <div class="col-lg-12 d-flex align-items-center justify-content-around flex-wrap py-5">
+                        <h3 class="fs-3">notez +NOM DU FILM+ /5</h3>
+                            <div class="star">
+                                <i class="fa-regular fa-star fa-2xl" style="color: #ffffff;"></i>
+                                <i class="fa-regular fa-star fa-2xl" style="color: #ffffff;"></i>
+                                <i class="fa-regular fa-star fa-2xl" style="color: #ffffff;"></i>
+                                <i class="fa-regular fa-star fa-2xl" style="color: #ffffff;"></i>
+                                <i class="fa-regular fa-star fa-2xl" style="color: #ffffff;"></i>
+                            </div>
+                    </div>
+                </div>
         </div>
         <div class="col bg-dark rounded p-5">
             <h2 class="text-white">Synopsis</h2>
@@ -34,7 +44,7 @@
             </p>
         </div>
         
-        <h2 class="text-white py-5 text-center bg-dark rounded">Laissez nous un commentaire !</h2>
+        <h2 class="text-white my-3 text-center pt-5 rounded">Laissez nous un commentaire !</h2>
         <form class="py-5">
             <div class="form-floating">
                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>

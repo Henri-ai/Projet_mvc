@@ -22,6 +22,9 @@ if(empty($password)){//SI LA VARIABLE est vide message d'erreur
 }
 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
+
+// if($error ['email']==false && $error['password']==false)
+
 }
 
 

@@ -11,22 +11,26 @@
                 </div>
                 <div class="col-lg-4">
                     <h2 class="text-center text-white">Inscription</h2>
-                    <form>
+                    <form method="post" novalidate>
                         <div class="mb-3 ">
                                 <label for="pseudo" class="form-label text-white">Pseudo :</label>
-                                <input type="text" class="form-control" id="pseudo">
+                                <input type="text" name="pseudo" class="form-control <?= isset($error['pseudo']) ? 'errorField' : '' ?>" id="pseudo" value="<?= $pseudo ?? ''?>" minlength="2" maxlength="36" pattern="<?= REGEX_PSEUDO ?>">
+                                <small id="pseudoError" class="form-text error"><?= $error['pseudo'] ?? '' ?></small>
                         </div>  
                         <div class="mb-3 ">
                             <label for="email" class="form-label text-white">Adresse mail :</label>
-                            <input type="email" class="form-control" id="email">
+                            <input type="email" name="email" class="form-control <?= isset($error['email']) ? 'errorField' : '' ?>" id="email" value="<?= $email ?? ''?>">
+                            <small id="emailError" class="form-text error"><?= $error['email'] ?? '' ?></small>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label text-white">Mot de passe :</label>
-                            <input type="password" class="form-control" id="password">
+                            <input type="password" name="password" class="form-control <?= isset($error['password']) ? 'errorField' : '' ?>" id="password" value="<?= $password ?? ''?>">
+                            <small id="passwordError" class="form-text error"><?= $error['password'] ?? '' ?></small>
                         </div>
                         <div class="mb-3">
                             <label for="confirmPassword" class="form-label text-white">Confirmation du Mot de passe :</label>
-                            <input type="password" class="form-control" id="confirmPassword">
+                            <input type="password"name="confirmPassword" class="form-control <?= isset($error['confirmPassword']) ? 'errorField' : '' ?>" id="confirmPassword" value="<?= $confirmPassword ?? ''?>">
+                            <small id="confirmPasswordError" class="form-text error"><?= $error['confirmPassword'] ?? '' ?></small>
                         </div>
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btn-outline-light">Inscription</button>
