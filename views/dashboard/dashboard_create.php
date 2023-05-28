@@ -6,14 +6,14 @@
                 <!-- title -->
                 <div class="row">
                     <div class="col-lg-6">
-                        <label for="titleMovie" class="form-label text-white">Titre du film : </label>
+                        <label for="titleMovie" class="form-label text-white">Titre du film * : </label>
                         <input type="text" name="titleMovie" class="form-control <?= isset($error['titleMovie']) ? 'errorField' : '' ?>" id="titleMovie" value="<?= $titleMovie ?? '' ?>">
                         <small id="titleMovieError" class="form-text error"><?=$error['titleMovie'] ?? ''?></small>
                     </div>
                     <!-- actor -->
                     <div class="col-lg-6">
                         <div class="autocomplete text-white">
-                            <label for="actor" class="form-label text-white">Acteurs :</label>
+                            <label for="actor" class="form-label text-white">Acteurs * :</label>
                             <input type="text" name="actor" class="form-control <?= isset($error['actor']) ? 'errorField' : '' ?>" id="actor" value="<?= $actor ?? '' ?>">
                             <small id="actorError" class="form-text error"><?=$error['actor'] ?? ''?></small>
                         </div> 
@@ -23,14 +23,14 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="autocomplete text-white">
-                            <label for="director" class="form-label text-white">Réalisateur :</label>
+                            <label for="director" class="form-label text-white">Réalisateur * :</label>
                             <input type="text" name="director" class="form-control <?= isset($error['director']) ? 'errorField' : '' ?>" id="director" value="<?= $director ?? '' ?>">
                             <small id="directorError" class="form-text error"><?=$error['director'] ?? ''?></small>
                         </div>
                     </div>
                 <!-- release date -->
                     <div class="col-lg-6">
-                            <label for="releaseDate" class="form-label text-white">Année de sortie :</label>
+                            <label for="releaseDate" class="form-label text-white">Année de sortie * :</label>
                             <input type="text" name="releaseDate" class="form-control <?= isset($error['releaseDate']) ? 'errorField' : '' ?>" id="releaseDate" value="<?=$releaseDate ?? ''?>">
                             <small id="releaseDateError" class="form-text error"><?=$error['releaseDate'] ?? ''?></small>
                     </div>
@@ -38,20 +38,21 @@
                 <!-- duration -->
                 <div class="row">
                     <div class="col-lg-6">
-                        <label for="duration" class="form-label text-white">Durée :</label>
+                        <label for="duration" class="form-label text-white">Durée * :</label>
                         <input type="text" name="duration" class="form-control <?= isset($error['duration']) ? 'errorField' : '' ?>" id="duration" value="<?=$duration ?? ''?>">
                         <small id="durationError" class="form-text error"><?=$error['duration'] ?? ''?></small>
                     </div>
                 <!-- picture -->
                     <div class="col-lg-6">
-                        <label for="picture" class="form-label text-white">Affiche du film :</label>
-                        <input type="file" name="picture" class="form-control" id="picture" value="">
+                        <label for="picture" class="form-label text-white">Affiche du film * :</label>
+                        <input type="file" name="picture" class="form-control" id="picture" value="" accept="image/png, image/jpeg">
+                        <small id="pictureError" class="form-text error"><?= $error['picture'] ?? '' ?></small>
                     </div>
                 </div>
                 <!-- styles -->
                 <div class="row">
                     <div class="col text-white">
-                        <label class="mt-3">Style/Catégorie : </label>
+                        <label class="mt-3">Style/Catégorie * : </label>
                         <?php
                         foreach (STYLES as $key=>$value) {
                             ?>
@@ -76,7 +77,7 @@
                     <div class="col mt-3">
                         <div class="form-floating">
                             <textarea class="form-control" placeholder="Leave a comment here" name="synopsis" id="synopsis" style="height: 500px" ><?=$synopsis ?? ''?></textarea>
-                            <label for="synopsis">Synopsis :</label>
+                            <label for="synopsis">Synopsis * :</label>
                             <small class="form-text error"><?= $error['synopsis'] ?? '' ?></small>
                         </div>
                     </div>

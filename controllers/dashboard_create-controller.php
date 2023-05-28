@@ -25,7 +25,7 @@
         }else { 
             $releaseDate=filter_var($releaseDate,FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_DATE . '/')));
             if ($releaseDate==false){// si le pseudo ne correspond pas à la regex -> erreur
-                $error['releaseDate'] = "Veuillez renseigner une année valide (ex : 2022)";
+                $error['releaseDate'] = "Veuillez renseigner une année de sortie valide (ex : 2022)";
             }
         }
         // durée---------------------------------------------------------------------------------------------
@@ -38,37 +38,27 @@
                 $error['duration']='Veuillez saisir une durée correct (ex : 2:30)';
             }
         }
-        // style/categorie
+
+        // picture----------------------------------------------------------------------------------------------
+
+        
+
+
+
+
+
+
+        // style/categorie---------------------------------------------------------------------------------------
         $selectedStyle = filter_input(INPUT_POST, 'style', FILTER_SANITIZE_NUMBER_INT, FILTER_REQUIRE_ARRAY) ?? [];
-        //synopsis
+        if (empty($selectedStyle)){
+            $error['style']='Veuillez cochez minimum une seul catégorie de film';
+        }
+        //synopsis-----------------------------------------------------------------------------------------------
         $synopsis= trim(filter_input(INPUT_POST,'synopsis',FILTER_SANITIZE_SPECIAL_CHARS));
         if(empty($synopsis)){
             $error['synopsis']='Veuillez saisir le synopsis du film';
         }
-        var_dump($synopsis);
-    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
