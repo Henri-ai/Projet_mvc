@@ -57,14 +57,5 @@
         <div class="divBtnTop d-flex justify-content-end my-4">
             <button class="btnTopPage" type="button"><a href="/controllers/detail-controller.php"><img class="logoNav" src="/public/assets/img/popcornLogo150x150.png" alt="" title=""></a></button> 
         </div> 
-
-
-
-
-
-
-
-
-
     </section>
 </div>

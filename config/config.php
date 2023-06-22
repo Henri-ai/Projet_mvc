@@ -1,4 +1,10 @@
 <?php 
+
+
+
+
+
+
 // regex formulaires
 define('REGEX_PSEUDO',"^([a-zA-Z0-9-_]{2,36})$");
 define('REGEX_DATE',"^(19|20)\d{2}$");

@@ -11,7 +11,7 @@
 }
 
 .screenImg{
-        background-image: url("../img/screen.jpg");
+        background-image: url("../img/Screen.webp");
         height: 100vh;
         width: 100%;
         object-fit: contain;
