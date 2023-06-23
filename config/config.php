@@ -1,7 +1,8 @@
 <?php 
 
-
-
+define('DSN', 'mysql:host=localhost;dbname=biblio_flix');
+define('USER', 'admin');
+define('PASSWORD', 'HyA1]01K.Qpofu)G');
 
 
 

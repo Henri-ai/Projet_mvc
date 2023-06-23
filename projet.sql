@@ -1,30 +1,3 @@
-CREATE TABLE producers(
-   producers_id INT AUTO_INCREMENT,
-   firstname VARCHAR(50)  NOT NULL,
-   lastname VARCHAR(50)  NOT NULL,
-   PRIMARY KEY(producers_id)
-);
-
-CREATE TABLE actors(
-   actors_id INT AUTO_INCREMENT,
-   firstname VARCHAR(50)  NOT NULL,
-   lastname VARCHAR(50)  NOT NULL,
-   PRIMARY KEY(actors_id)
-);
-
-CREATE TABLE comments(
-   comments_id INT AUTO_INCREMENT,
-   comment TEXT NOT NULL,
-   added_at VARCHAR(50) ,
-   PRIMARY KEY(comments_id)
-);
-
-CREATE TABLE grades(
-   grades_id INT AUTO_INCREMENT,
-   note SMALLINT,
-   PRIMARY KEY(grades_id)
-);
-
 CREATE TABLE movies(
    movies_id INT AUTO_INCREMENT,
    title VARCHAR(50)  NOT NULL,
@@ -33,9 +6,9 @@ CREATE TABLE movies(
    picture VARCHAR(50)  NOT NULL,
    synopsis TEXT NOT NULL,
    added_at DATETIME,
-   grades_id INT,
-   PRIMARY KEY(movies_id),
-   FOREIGN KEY(grades_id) REFERENCES grades(grades_id)
+   name_actors TEXT NOT NULL,
+   name_producers TEXT NOT NULL,
+   PRIMARY KEY(movies_id)
 );
 
 CREATE TABLE users(
@@ -47,47 +20,48 @@ CREATE TABLE users(
    validated_at DATETIME,
    updated_at DATETIME,
    deleted_at DATETIME,
-   grades_id INT,
-   PRIMARY KEY(users_id),
-   FOREIGN KEY(grades_id) REFERENCES grades(grades_id)
+   PRIMARY KEY(users_id)
 );
 
 CREATE TABLE styles(
    styles_id INT AUTO_INCREMENT,
    label VARCHAR(100)  NOT NULL,
+   PRIMARY KEY(styles_id)
+);
+
+CREATE TABLE comments(
+   comments_id INT AUTO_INCREMENT,
+   comment TEXT NOT NULL,
+   added_at VARCHAR(50) ,
    movies_id INT NOT NULL,
-   PRIMARY KEY(styles_id),
+   users_id INT NOT NULL,
+   PRIMARY KEY(comments_id),
+   FOREIGN KEY(movies_id) REFERENCES movies(movies_id),
+   FOREIGN KEY(users_id) REFERENCES users(users_id)
+);
+
+CREATE TABLE grades(
+   grades_id INT AUTO_INCREMENT,
+   note SMALLINT,
+   users_id INT NOT NULL,
+   movies_id INT NOT NULL,
+   PRIMARY KEY(grades_id),
+   FOREIGN KEY(users_id) REFERENCES users(users_id),
    FOREIGN KEY(movies_id) REFERENCES movies(movies_id)
 );
 
-CREATE TABLE movies_producers(
+CREATE TABLE movies_styles(
    movies_id INT,
-   producers_id INT,
-   PRIMARY KEY(movies_id, producers_id),
+   styles_id INT,
+   PRIMARY KEY(movies_id, styles_id),
    FOREIGN KEY(movies_id) REFERENCES movies(movies_id),
-   FOREIGN KEY(producers_id) REFERENCES producers(producers_id)
+   FOREIGN KEY(styles_id) REFERENCES styles(styles_id)
 );
 
-CREATE TABLE movies_actors(
+CREATE TABLE movies_users(
    movies_id INT,
-   actors_id INT,
-   PRIMARY KEY(movies_id, actors_id),
-   FOREIGN KEY(movies_id) REFERENCES movies(movies_id),
-   FOREIGN KEY(actors_id) REFERENCES actors(actors_id)
-);
-
-CREATE TABLE users_comments(
    users_id INT,
-   comments_id INT,
-   PRIMARY KEY(users_id, comments_id),
-   FOREIGN KEY(users_id) REFERENCES users(users_id),
-   FOREIGN KEY(comments_id) REFERENCES comments(comments_id)
-);
-
-CREATE TABLE movies_comments(
-   movies_id INT,
-   comments_id INT,
-   PRIMARY KEY(movies_id, comments_id),
+   PRIMARY KEY(movies_id, users_id),
    FOREIGN KEY(movies_id) REFERENCES movies(movies_id),
-   FOREIGN KEY(comments_id) REFERENCES comments(comments_id)
+   FOREIGN KEY(users_id) REFERENCES users(users_id)
 );
