@@ -6,13 +6,23 @@
                     <form method="post" novalidate>
                         <div class="mb-3">
                             <label for="text" class="form-label text-white">Pseudo :</label>
-                            <input type="text" name="uptdatePseudo" class="form-control <?= isset($error['uptdatePseudo']) ? 'errorField' : '' ?>" id="uptdatePseudo" aria-describedby="uptdatePseudo" value="<?= $uptdatePseudo ?? '' ?>" required>                                                                                                       
-                            <small id="uptdatePseudoError" class="form-text error"><?= $error['uptdatePseudo'] ?? '' ?></small> 
+                            <input type="text" name="updatePseudo" class="form-control <?= isset($error['updatePseudo']) ? 'errorField' : '' ?>" id="updatePseudo" aria-describedby="updatePseudo" value="<?= $updatePseudo ?? '' ?>" required>                                                                                                       
+                            <small id="updatePseudoError" class="form-text error"><?= $error['updatePseudo'] ?? '' ?></small> 
                         </div>
                         <div class="mb-3">
-                            <label for="utpdateEmail" class="form-label text-white">Adresse email :</label>
-                            <input type="email" name="utpdateEmail" class="form-control <?= isset($error['utpdateEmail']) ? 'errorField' : '' ?>" id="utpdateEmail" aria-describedby="utpdateEmail" value="<?= $utpdateEmail ?? '' ?>" required>
-                            <small id="utpdateEmailError" class="form-text error"><?=$error['utpdateEmail'] ?? ''//coalescence si $error existe on l'affiche sinon ''(vide)?></small>
+                            <label for="updateEmail" class="form-label text-white">Adresse email :</label>
+                            <input type="email" name="updateEmail" class="form-control <?= isset($error['updateEmail']) ? 'errorField' : '' ?>" id="updateEmail" aria-describedby="updateEmail" value="<?= $updateEmail ?? '' ?>" required>
+                            <small id="updateEmailError" class="form-text error"><?=$error['updateEmail'] ?? ''//coalescence si $error existe on l'affiche sinon ''(vide)?></small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="updatePassword" class="form-label text-white">Changer de mot de passe :</label>
+                            <input type="password" name="updatePassword" class="form-control <?= isset($error['updatePassword']) ? 'errorField' : '' ?>" id="updatePassword" aria-describedby="updatePassword" value="<?= $updatePassword ?? '' ?>" required>
+                            <small id="updatePasswordError" class="form-text error"><?=$error['updatePassword'] ?? ''//coalescence si $error existe on l'affiche sinon ''(vide)?></small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="updatePasswordConfirm" class="form-label text-white">Confirmer votre nouveau mot de passe :</label>
+                            <input type="password" name="updatePasswordConfirm" class="form-control <?= isset($error['updatePasswordConfirm']) ? 'errorField' : '' ?>" id="updatePasswordConfirm" aria-describedby="updatePasswordConfirm" value="<?= $updatePasswordConfirm ?? '' ?>" required>
+                            <small id="updatePasswordConfirmError" class="form-text error"><?=$error['updatePasswordConfirm'] ?? ''//coalescence si $error existe on l'affiche sinon ''(vide)?></small>
                         </div>
                         <div class="btnValidate">
                             <button type="submit" class="btn btn-outline-light">Modifier</button>
