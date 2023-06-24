@@ -11,6 +11,9 @@
                 <li>
                     <a class="nav-link active" aria-current="page" href="/controllers/libraryUser-controller.php">Ma liste</a>
                 </li>
+                <li>
+                    <a class="nav-link active" aria-current="page" href="/controllers/dashboard_create-controller.php">Ajouter un film</a>
+                </li>
             </ul>
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">

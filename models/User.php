@@ -84,4 +84,62 @@ class User
     {
         $this->deleted_at = $deleted_at;
     }
+
+    public function add(): bool
+    {
+        $db = connect();
+        $sql = 'INSERT INTO `users` (`pseudo`,`email`,`password`)
+        VALUES (:pseudo, :email, :password);';
+        $sth = $db->prepare($sql);
+        $sth->bindValue(':pseudo', $this->pseudo);
+        $sth->bindValue(':email', $this->email);
+        $sth->bindValue(':password', $this->password);
+        return $sth->execute();
+    }
+
+
+    public static function getAll(): array|false
+    {
+        $db = connect();
+        $sql = 'SELECT `users`.`users_id`,`users`.`pseudo`,`users`.`email`,
+                `users`.`password`
+                FROM `users`;';
+        $sth = $db->query($sql);
+        return $sth->fetchAll();
+    }
+
+    public static function get($users_id): mixed
+    {
+        $db = connect();
+        $sql = 'SELECT `users`.`users_id`,`users`.`pseudo`,`users`.`email`,
+        `users`.`password`
+            FROM `users`
+            WHERE `users`.`users_id`=:id;';
+        $sth = $db->prepare($sql);
+        $sth->bindValue(':id', $users_id);
+        $sth->execute();
+        return $sth->fetch();
+    }
+
+    public function update(): bool
+    {
+        $db = connect();
+        $sql = 'UPDATE `users` SET `pseudo`=:pseudo,`email`=:email,`password`=:password
+                WHERE `users_id`=:id;';
+        $sth = $db->prepare($sql);
+        $sth->bindValue(':id', $this->users_id);
+        $sth->bindValue(':pseudo', $this->pseudo);
+        $sth->bindValue(':email', $this->email);
+        $sth->bindValue(':password', $this->password);
+        return $sth->execute();
+    }
+
+    public function delete($users_id): bool
+    {
+        $db = connect();
+        $sql = 'DELETE FROM `users` WHERE `users_id`=:id;';
+        $sth = $db->prepare($sql);
+        $sth->bindValue(':id', $users_id);
+        return $sth->execute();
+    }
 }

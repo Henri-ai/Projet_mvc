@@ -24,4 +24,26 @@ class Style
     {
         $this->label = $label;
     }
+
+
+    public static function getAll(): array|false
+    {
+        $db = connect();
+        $sql = 'SELECT `styles`.`styles_id`,`styles`.`label`
+            FROM `styles`;';
+        $sth = $db->query($sql);
+        return $sth->fetchAll();
+    }
+
+    public static function get($styles_id): mixed
+    {
+        $db = connect();
+        $sql = 'SELECT `styles`.`styles_id`,`styles`.`label`
+        FROM `styles`
+        WHERE `styles`.`styles_id`=:id;';
+        $sth = $db->prepare($sql);
+        $sth->bindValue(':id', $styles_id);
+        $sth->execute();
+        return $sth->fetch();
+    }
 }

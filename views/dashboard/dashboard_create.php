@@ -43,7 +43,7 @@
                     <!-- picture -->
                     <div class="col-lg-6">
                         <label for="picture" class="form-label text-white">Affiche du film * :</label>
-                        <input type="file" name="picture" class="form-control <?= isset($error['actor']) ? 'errorField' : '' ?>" id="picture" accept="image/png, image/jpeg">
+                        <input type="file" name="picture" class="form-control <?= isset($error['picture']) ? 'errorField' : '' ?>" id="picture" accept="image/png, image/jpeg">
                         <small id="pictureError" class="form-text error"><?= $error['picture'] ?? '' ?></small>
                     </div>
                 </div>

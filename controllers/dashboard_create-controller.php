@@ -41,12 +41,10 @@
 
         // picture----------------------------------------------------------------------------------------------
 
-        
-
-
-
-
-
+        $picture= filter_input(INPUT_POST,'picture');
+        if(empty($picture)){
+            $error['picture']='Veuillez saisir une image au bon format';
+        }
 
         // style/categorie---------------------------------------------------------------------------------------
         $selectedStyle = filter_input(INPUT_POST, 'style', FILTER_SANITIZE_NUMBER_INT, FILTER_REQUIRE_ARRAY) ?? [];
