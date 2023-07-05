@@ -9,6 +9,9 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/5b1fd06657.js" crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="/public/assets/img/popcornLogo150x150.png" type="image/png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../public/assets/css/general.css">
     <title>BiblioFlix - Liste des Films</title>
 </head>

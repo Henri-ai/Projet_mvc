@@ -1,6 +1,6 @@
 <?php 
-
 require_once __DIR__. '/../config/config.php';
+require_once __DIR__. '/../models/User.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -39,9 +39,24 @@ if(empty($password) && empty($confirmPassword)){// si l'input du password et de 
     $error["confirmPassword"] = "Les mots de passe ne correspondent pas";
 }
 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+}
+if (empty($error)) {
+    $user= new User ();
+    $user->setPseudo($pseudo);
+    $user->setEmail($email);
+    $user->setPassword($passwordHash);
+    $verifEmail=$user->isExist();
+    if ($verifEmail==false){
+        $userSaved=$user->add();
+        header('location: /controllers/login-controller.php');
+        SessionFlash::setMessage('Inscription réussi !! Veuillez vous connecter.');
+    }
+    else {
+        $error['email']='l\'adresse mail existe déja';
+    }
+    
 
 }
-
 
 
 

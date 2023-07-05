@@ -6,7 +6,7 @@
                     <h1 class="text-white">Vos films</h1>
                 </div>
                 <div class="col">
-                    <a href="../controllers/preference-controller.php" class="btn btn-outline-dark border-white"><i class="fa-solid fa-gear" style="color: #ffffff;"></i></a>
+                    <a href="../controllers/preference-controller.php?id=<?=$user->users_id?>" class="btn btn-outline-dark border-white"><i class="fa-solid fa-gear" style="color: #ffffff;"></i></a>
                 </div>
             </div>
         </div>

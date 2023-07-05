@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__.'/../helpers/connect.php';
 class User
 {
 
@@ -87,10 +87,10 @@ class User
 
     public function add(): bool
     {
-        $db = connect();
+        $pdo = Database::getInstance();
         $sql = 'INSERT INTO `users` (`pseudo`,`email`,`password`)
         VALUES (:pseudo, :email, :password);';
-        $sth = $db->prepare($sql);
+        $sth = $pdo->prepare($sql);
         $sth->bindValue(':pseudo', $this->pseudo);
         $sth->bindValue(':email', $this->email);
         $sth->bindValue(':password', $this->password);
@@ -100,33 +100,46 @@ class User
 
     public static function getAll(): array|false
     {
-        $db = connect();
+        $pdo = Database::getInstance();
         $sql = 'SELECT `users`.`users_id`,`users`.`pseudo`,`users`.`email`,
                 `users`.`password`
                 FROM `users`;';
-        $sth = $db->query($sql);
+        $sth = $pdo->query($sql);
         return $sth->fetchAll();
     }
 
-    public static function get($users_id): mixed
+    public static function get(int $users_id): mixed
     {
-        $db = connect();
+        $pdo = Database::getInstance();
         $sql = 'SELECT `users`.`users_id`,`users`.`pseudo`,`users`.`email`,
         `users`.`password`
             FROM `users`
             WHERE `users`.`users_id`=:id;';
-        $sth = $db->prepare($sql);
-        $sth->bindValue(':id', $users_id);
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id', $users_id,PDO::PARAM_INT);
+        $sth->execute();
+        return $sth->fetch();
+    }
+
+    public static function getByMail($email): mixed
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT `users`.`users_id`,`users`.`pseudo`,`users`.`email`,
+        `users`.`password`
+            FROM `users`
+            WHERE `users`.`email`=:email ;';
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':email', $email);
         $sth->execute();
         return $sth->fetch();
     }
 
     public function update(): bool
     {
-        $db = connect();
+        $pdo = Database::getInstance();
         $sql = 'UPDATE `users` SET `pseudo`=:pseudo,`email`=:email,`password`=:password
                 WHERE `users_id`=:id;';
-        $sth = $db->prepare($sql);
+        $sth = $pdo->prepare($sql);
         $sth->bindValue(':id', $this->users_id);
         $sth->bindValue(':pseudo', $this->pseudo);
         $sth->bindValue(':email', $this->email);
@@ -136,10 +149,20 @@ class User
 
     public function delete($users_id): bool
     {
-        $db = connect();
+        $pdo = Database::getInstance();
         $sql = 'DELETE FROM `users` WHERE `users_id`=:id;';
-        $sth = $db->prepare($sql);
+        $sth = $pdo->prepare($sql);
         $sth->bindValue(':id', $users_id);
         return $sth->execute();
+    }
+
+    public function isExist(){
+        $pdo = Database::getInstance();
+        $sql=('SELECT `users`.`email` 
+        FROM `users` WHERE `users`.`email`=:email');
+        $sth=$pdo->prepare($sql);
+        $sth->bindValue(':email',$this->email);//bindValue : Associe une valeur à un paramètre
+        $sth->execute();
+        return $sth->fetch();
     }
 }

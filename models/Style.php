@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__.'/../helpers/connect.php';
 class Style
 {
 
@@ -28,22 +28,32 @@ class Style
 
     public static function getAll(): array|false
     {
-        $db = connect();
+        $pdo = Database::getInstance();
         $sql = 'SELECT `styles`.`styles_id`,`styles`.`label`
             FROM `styles`;';
-        $sth = $db->query($sql);
+        $sth = $pdo->query($sql);
         return $sth->fetchAll();
     }
 
     public static function get($styles_id): mixed
     {
-        $db = connect();
+        $pdo = Database::getInstance();
         $sql = 'SELECT `styles`.`styles_id`,`styles`.`label`
         FROM `styles`
         WHERE `styles`.`styles_id`=:id;';
-        $sth = $db->prepare($sql);
+        $sth = $pdo->prepare($sql);
         $sth->bindValue(':id', $styles_id);
         $sth->execute();
         return $sth->fetch();
+    }
+
+    public function add(): bool
+    {
+        $pdo = Database::getInstance();
+        $sql = 'INSERT INTO `styles` (`styles_id`)
+        VALUES (:styles_id);';
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':styles_id', $this->styles_id);
+        return $sth->execute();
     }
 }

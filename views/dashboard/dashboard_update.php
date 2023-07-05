@@ -1,7 +1,7 @@
 <div class="container">
     <div class="col-12">
         <section>
-            <h1 class="text-white d-flex justify-content-center py-5">Ajout de film</h1>
+            <h1 class="text-white d-flex justify-content-center py-5">Modifier le film</h1>
             <form autocomplete="off" method="post" id="formUser" enctype="multipart/form-data" novalidate>
                 <!-- title -->
                 <div class="row">
@@ -43,7 +43,7 @@
                     <!-- picture -->
                     <div class="col-lg-6">
                         <label for="picture" class="form-label text-white">Affiche du film * :</label>
-                        <input type="file" name="picture" class="form-control <?= isset($error['picture']) ? 'errorField' : '' ?>" id="picture" accept=".png, .jpg, .jpeg">   
+                        <input type="file" name="picture" class="form-control <?= isset($error['picture']) ? 'errorField' : '' ?>" id="picture" accept="image/png, image/jpeg">
                         <small id="pictureError" class="form-text error"><?= $error['picture'] ?? '' ?></small>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                         foreach ($styles as $key => $value) {
                         ?>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="style" id="style<?= $key ?>" value="<?= $value->styles_id ?? ''?>">
+                                <input class="form-check-input" type="checkbox" name="style" id="style<?= $key ?>" value="<?= $key+1 ?? ''?>">
                                 <label class="form-check-label" for="style<?= $key ?>">
                                     <?= $value->label ?>
                                 </label>
@@ -68,7 +68,7 @@
                     <!-- synopsis -->
                     <div class="col mt-3">
                         <div class="form-floating">
-                            <textarea class="form-control <?= isset($error['synopsis']) ? 'errorField' : '' ?>" placeholder="Leave a comment here" name="synopsis" id="synopsis" style="height: 500px"><?= $synopsis ?? '' ?></textarea>
+                            <textarea class="form-control <?= isset($error['actor']) ? 'errorField' : '' ?>" placeholder="Leave a comment here" name="synopsis" id="synopsis" style="height: 500px"><?= $synopsis ?? '' ?></textarea>
                             <label for="synopsis">Synopsis * :</label>
                             <small class="form-text error"><?= $error['synopsis'] ?? '' ?></small>
                         </div>

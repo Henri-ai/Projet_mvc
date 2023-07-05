@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__.'/../helpers/connect.php';
 class Movie
 {
 
@@ -109,10 +109,10 @@ class Movie
 
     public function add(): bool
     {
-        $db = connect();
+        $pdo = Database::getInstance();
         $sql = 'INSERT INTO `movies` (`title`,`movie_year`,`duration`,`picture`,`synopsis`,`name_actors`,`name_producers`)
         VALUES (:title, :movie_year, :duration, :picture, :synopsis, :name_actors, :name_producers);';
-        $sth = $db->prepare($sql);
+        $sth = $pdo->prepare($sql);
         $sth->bindValue(':title', $this->title);
         $sth->bindValue(':movie_year', $this->movie_year);
         $sth->bindValue(':duration', $this->duration);

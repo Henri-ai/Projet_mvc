@@ -5,7 +5,7 @@
                 <div class="col text-center pt-5">
                     <img class="rounded" src="/public/assets/img/img_vide.jpg" alt="" title="">
                     <h1 class="text-white">Titre du film</h1>
-                    <a href="" class="btn btn-outline-light"><i class="fa-solid fa-plus fa-circle-plus fa-bounce" style="color: #D0001A;"></i> Liste</a>
+                    <a href="" class="btn btn-outline-light"><i class="fa-solid fa-plus-minus fa-bounce" style="color: #d0001a;"></i> Liste</a>
                 </div>
                 <div class="col movieInformation text-center rounded p-2">
                     <h2 class="text-white">Nom du réalisateur</h2>
@@ -13,6 +13,9 @@
                     <p class="text-white">Les acteurs principaux</p>
                     <p class="text-white">L'année de sortie</p>
                     <p class="text-white">La durée du film</p>
+                    <div class="col d-flex justify-content-center">
+                        <a href="/controllers/dashboard_update-controller.php" class="btn btn-outline-light">Modifier</a>
+                    </div>
                 </div>
             </div>
         </div>

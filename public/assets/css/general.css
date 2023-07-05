@@ -29,6 +29,7 @@
 
 body {
     background-color: black;
+    font-family: 'Bebas Neue', sans-serif;
 }
 
 section{
@@ -70,4 +71,3 @@ footer {
 .errorField{
     border: 1px solid red;
 }
-

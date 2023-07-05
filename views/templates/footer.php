@@ -1,8 +1,11 @@
 </main>
     <footer>
-        <div class=" info text-center">
-            <a class="text-white text-decoration-none" href="#">Politique de confidentialité -</a>
+        <div class=" info text-center bg-dark d-flex align-items-center justify-content-around">
+            <a class="text-white text-decoration-none" href="#">Politique de confidentialité</a>
             <a class="text-white text-decoration-none" href="#">Mentions légales</a>
+            <div class="divBtnTop">
+                <button class="btnTopPage" type="button"><a href="/controllers/home-controller.php"><img class="logoNav" src="/public/assets/img/popcornLogo150x150.png" alt="" title=""></a></button> 
+            </div>
         </div>
     </footer>
     <script src="/public/assets/js/script.js"></script>
