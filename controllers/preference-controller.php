@@ -3,12 +3,14 @@ require_once __DIR__. '/../config/config.php';
 require_once __DIR__. '/../models/User.php';
 
 SessionFlash::start();
+$id = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
 try {
+    $user=User::get($id);
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // pseudo-------------------------------------------------------------------------------------
         $updatePseudo = trim(filter_input(INPUT_POST, 'updatePseudo', FILTER_SANITIZE_SPECIAL_CHARS));
-    
+
         if(empty($updatePseudo)) {// si input vide -> erreur
             $error["updatePseudo"] = "Vous devez renseigner un pseudo!!";
         } else {
@@ -16,37 +18,22 @@ try {
             if ($validatePseudo==false) {// si le pseudo ne correspond pas à la regex -> erreur
                 $error["updatePseudo"] = "Le pseudo n'est pas au bon format !";
             }
+        }        
+        
+        if(empty($error)){
+            $user=new User();
+            $user->setUsersId($id);
+            $user->setPseudo($updatePseudo);
+            $user->updateProfil();
         }
-        // email-------------------------------------------------------------------------------------
-        $updateEmail = filter_input(INPUT_POST, 'updateEmail', FILTER_SANITIZE_EMAIL); //Supprimez tous les caractères sauf les lettres, les chiffres et !#$%&'*+-=?^_`{|}~@.[].
-    
-        if (empty($updateEmail)) { // si input vide -> erreur
-            $error['updateEmail'] = 'Veuillez saisir votre adresse mail';
-        } else {
-            $updateEmail = filter_var($updateEmail, FILTER_VALIDATE_EMAIL); //Vérifie si la valeur est une adresse e-mail valide.
-            if ($updateEmail == false) { // si l'adresse mail n'est pas valide -> erreur
-                $error['updateEmail'] = 'Veuillez saisir une adresse mail valide';
-            }
-        }
-        // mot de passe + verif-----------------------------------------------------------------------
-        $updatePassword= filter_input(INPUT_POST, 'updatePassword');
-        $updatePasswordConfirm = filter_input(INPUT_POST, 'updatePasswordConfirm');
-    
-        if(empty($updatePassword) && empty($updatePasswordConfirm)) {// si l'input du password et de la confirmation du password est vide -> erreur
-            $error['updatePassword'] ="Veuillez saisir un mot de passe";
-            $error['updatePasswordConfirm'] ="Veuillez saisir un mot de passe";
-        } else {
-            if($updatePassword != $updatePasswordConfirm) {
-                $error["updatePassword"] = "Les mots de passe ne correspondent pas";
-                $error["updatePasswordConfirm"] = "Les mots de passe ne correspondent pas";
-            }
-            $passwordHash = password_hash($updatePassword, PASSWORD_DEFAULT);
-    
-        }
+        header('location: /controllers/libraryUser-controller.php');
+        SessionFlash::setMessage('Votre profil à bien été mis à jour');
     }
+    
 } catch (\Throwable $th) {
     throw $th;
 }
+$user=User::get($id);
 
 
 

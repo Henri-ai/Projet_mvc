@@ -7,20 +7,18 @@
                     <tr class="text-white text-center">
                         <th scope="col">Pseudo</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Supprimer l'utilisateurs</th>
+                        <th scope="col">Supprimer l'utilisateur</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="text-white text-center">
-                        <td>Mark</td>
-                        <td>Ottolsqsl@gmail.com</td>
+                    <?php 
+                    foreach ($users as $key => $user) { ?>
+                        <tr class="text-white text-center">
+                        <td><?=$user->pseudo?></td>
+                        <td><?=$user->email?></td>
                         <td><button type="button" class="btn btn-outline-danger">Supprimer</button></td>
                     </tr>
-                    <tr class="text-white text-center">
-                        <td>Jacob</td>
-                        <td>Thorntojjsjdksdkn@hotmail.com</td>
-                        <td><button type="button" class="btn btn-outline-danger">Supprimer</button></td>
-                    </tr>
+                <?php } ?>
                 </tbody>
             </table>
         </section>

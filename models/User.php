@@ -134,15 +134,24 @@ class User
         return $sth->fetch();
     }
 
-    public function update(): bool
+    public function updateProfil(): bool
     {
         $pdo = Database::getInstance();
-        $sql = 'UPDATE `users` SET `pseudo`=:pseudo,`email`=:email,`password`=:password
+        $sql = 'UPDATE `users` SET `pseudo`=:pseudo
                 WHERE `users_id`=:id;';
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':id', $this->users_id);
         $sth->bindValue(':pseudo', $this->pseudo);
-        $sth->bindValue(':email', $this->email);
+        return $sth->execute();
+    }
+
+    public function updatePassword(): bool
+    {
+        $pdo = Database::getInstance();
+        $sql = 'UPDATE `users` SET `password`=:password
+                WHERE `users_id`=:id;';
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id', $this->users_id);
         $sth->bindValue(':password', $this->password);
         return $sth->execute();
     }

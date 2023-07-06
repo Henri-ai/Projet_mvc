@@ -40,8 +40,9 @@ if(empty($password) && empty($confirmPassword)){// si l'input du password et de 
 }
 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 }
+
 if (empty($error)) {
-    $user= new User ();
+    $user= new User();
     $user->setPseudo($pseudo);
     $user->setEmail($email);
     $user->setPassword($passwordHash);

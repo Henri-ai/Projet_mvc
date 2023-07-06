@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(empty($password)) {//SI LA VARIABLE est vide message d'erreur
         $error['password']='Veuillez saisir un mot de passe';
     }
+
     //-------------------------------------------------------------------------
     $user=User::getByMail($email);// je recupére l'utilisateur grace à son email
     if ($user!=false) {
@@ -32,8 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die;
         }
         } else {
-            $error['user']='Ce compte n\'existe pas, Veuillez vous inscrire';
-        }    
+            $error['user']='Ce compte n\'existe pas, Veuillez vous inscrire ou réessayer';
+        }
 }
 
 include __DIR__. '/../views/templates/header.php';

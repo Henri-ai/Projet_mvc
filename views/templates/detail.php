@@ -5,7 +5,7 @@
                 <div class="col text-center pt-5">
                     <img class="rounded" src="/public/assets/img/img_vide.jpg" alt="" title="">
                     <h1 class="text-white">Titre du film</h1>
-                    <a href="" class="btn btn-outline-light"><i class="fa-solid fa-plus-minus fa-bounce" style="color: #d0001a;"></i> Liste</a>
+                    <a href="" class="btn btn-outline-light"><i class="fa-solid fa-plus-minus fa-bounce" style="color: #b50013;"></i> Liste</a>
                 </div>
                 <div class="col movieInformation text-center rounded p-2">
                     <h2 class="text-white">Nom du réalisateur</h2>
