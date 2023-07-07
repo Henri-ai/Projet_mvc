@@ -156,7 +156,7 @@ class User
         return $sth->execute();
     }
 
-    public function delete($users_id): bool
+    public static function delete($users_id): bool
     {
         $pdo = Database::getInstance();
         $sql = 'DELETE FROM `users` WHERE `users_id`=:id;';

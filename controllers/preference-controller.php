@@ -3,9 +3,15 @@ require_once __DIR__. '/../config/config.php';
 require_once __DIR__. '/../models/User.php';
 
 SessionFlash::start();
-$id = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
+$users_id = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
 try {
-    $user=User::get($id);
+    $user=User::get($users_id);
+    if (isset($_GET['action'])) {
+        if ($_GET['action']=='delete') {
+            $userDelete=User::delete($users_id);
+            header('location: /controllers/logout-controller.php');
+        }
+    } 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // pseudo-------------------------------------------------------------------------------------
@@ -22,18 +28,18 @@ try {
         
         if(empty($error)){
             $user=new User();
-            $user->setUsersId($id);
+            $user->setUsersId($users_id);
             $user->setPseudo($updatePseudo);
             $user->updateProfil();
         }
         header('location: /controllers/libraryUser-controller.php');
         SessionFlash::setMessage('Votre profil à bien été mis à jour');
     }
-    
+
 } catch (\Throwable $th) {
-    throw $th;
+    var_dump($th);
 }
-$user=User::get($id);
+$user=User::get($users_id);
 
 
 

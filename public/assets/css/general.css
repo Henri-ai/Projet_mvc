@@ -33,14 +33,14 @@ body {
 }
 
 section{
-    min-height: 90vh;
+    min-height: 80vh;
 }
 
 nav{
-    height: 7vh;
+    height: 10vh;
 }
 footer {
-    height: 3vh;
+    height: 10vh;
     background-color: #212529;
 }
 /* button card */

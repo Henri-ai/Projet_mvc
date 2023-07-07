@@ -15,7 +15,7 @@
                         </div>
                         <div class="btnValidate">
                             <button type="submit" class="btn btn-outline-light">Modifier</button>
-                            <button type="" class="btn btn-outline-danger">Supprimer votre compte</button>
+                            <a href="/controllers/preference-controller.php?id=<?=$user->users_id?>&action=delete" class="btn btn-outline-danger" role="button">Supprimer votre compte</a>
                         </div>
                     </form>
             </div>

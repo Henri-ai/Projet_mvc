@@ -31,5 +31,7 @@ define('MESSAGES', [
     1=>'Le profil a bien été mis à jour',
 ]);
 
+//image
+define('AUTHORIZED_IMAGE_FORMAT', ['image/jpeg', 'image/png']);
 
 ?>

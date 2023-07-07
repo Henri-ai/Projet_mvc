@@ -55,7 +55,7 @@
                         foreach ($styles as $key => $value) {
                         ?>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="style" id="style<?= $key ?>" value="<?= $value->styles_id ?? ''?>">
+                                <input class="form-check-input" type="checkbox" name="style[]" id="style<?= $key ?>" value="<?= $value->styles_id ?? ''?>">
                                 <label class="form-check-label" for="style<?= $key ?>">
                                     <?= $value->label ?>
                                 </label>

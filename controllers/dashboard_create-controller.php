@@ -24,6 +24,7 @@
         }
         //annee de sortie----------------------------------------------------------------------------------------
         $releaseDate = filter_input(INPUT_POST,'releaseDate',FILTER_SANITIZE_NUMBER_INT);
+        
         if (empty($releaseDate)){
             $error['releaseDate']='Veuillez saisir l\'année de sortie du film';
         }else { 
@@ -44,14 +45,28 @@
         }
 
         // picture----------------------------------------------------------------------------------------------
+        if (isset($_FILES['picture'])){
+            $picture = $_FILES['picture'];
+            if(!empty($picture['tmp_name'])){
+                if($picture['error']>0){
+                    $error['picture']="Erreur lors du transfert de l'image";
+                }else {
+                    if (!in_array($picture['type'],AUTHORIZED_IMAGE_FORMAT)){
+                        $error['picture']="l'image n'est pas au bon format";
+                    }else{
+                        $extension = pathinfo($picture['name'], PATHINFO_EXTENSION);
+                        $from = $picture['tmp_name'];
+                        $fileName = uniqid('img_') . '.' .$extension;
+                        $to = __DIR__.'/../public/uploads/movies_picture' . $fileName;
+                        move_uploaded_file($from, $to);
+                    }
+                }
+            }
+        }
 
-        $picture= filter_input(INPUT_POST,'picture');
-        // if(empty($picture)){
-        //     $error['picture']='Veuillez saisir une image au bon format';
-        // }
         
         // style/categorie---------------------------------------------------------------------------------------
-        $selectedStyle = filter_input(INPUT_POST, 'style', FILTER_SANITIZE_NUMBER_INT);
+        $selectedStyle = filter_input(INPUT_POST, 'style', FILTER_SANITIZE_NUMBER_INT,FILTER_REQUIRE_ARRAY);
         if (empty($selectedStyle)){
             $error['style']='Veuillez cochez minimum une seul catégorie de film';
         }
@@ -65,15 +80,15 @@
 
             $pdo = Database::getInstance();
             $pdo->beginTransaction();
-
              //**** HYDRATATION de l'objet Movie****/
             $movie=new Movie();
+            $movie->setMoviesId($movies_id);
             $movie->setTitle($titleMovie);
             $movie->setNameActors($actor);
             $movie->setNameProducers($director);
             $movie->setMovieYear($releaseDate);
             $movie->setDuration($duration);
-            $movie->setPicture($picture);
+            $movie->setPicture($fileName);
             $movie->setSynopsis($synopsis);
             // Enregistrement du film dans la bdd
             $infoMovieSaved = $movie->add();
@@ -81,9 +96,11 @@
             $idMovies= $pdo->lastInsertId();
             //**** HYDRATATION de l'objet Movies_styles****/
             $style=new Movie_styles();
-            $style->setStylesId($selectedStyle);
-            $isStyleSaved=$style->add();
-
+            foreach ($selectedStyle as $key => $value) {
+                $style->setStylesId($value);
+                
+                $style->add();
+            }
             if ($infoMovieSaved ===true && $isStyleSaved === true){
                 $pdo->commit();// Valide la transaction et exécute toutes les requetes
             }else {
@@ -91,6 +108,7 @@
             }
         }
 }
+
     } catch (\Throwable $th) {
         throw $th;
     }
