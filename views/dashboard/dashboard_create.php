@@ -2,6 +2,7 @@
     <div class="col-12">
         <section>
             <h1 class="text-white d-flex justify-content-center py-5">Ajout de film</h1>
+            <small class="form-text d-flex justify-content-center fs-2 succes " name="addMovieSucces"><?= $succes['message'] ?? '' ?></small>
             <form autocomplete="off" method="post" id="formUser" enctype="multipart/form-data" novalidate>
                 <!-- title -->
                 <div class="row">

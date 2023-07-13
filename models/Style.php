@@ -35,18 +35,6 @@ class Style
         return $sth->fetchAll();
     }
 
-    public static function get($styles_id): mixed
-    {
-        $pdo = Database::getInstance();
-        $sql = 'SELECT `styles`.`styles_id`,`styles`.`label`
-        FROM `styles`
-        WHERE `styles`.`styles_id`=:id;';
-        $sth = $pdo->prepare($sql);
-        $sth->bindValue(':id', $styles_id);
-        $sth->execute();
-        return $sth->fetch();
-    }
-
     public function add(): bool
     {
         $pdo = Database::getInstance();
@@ -56,4 +44,6 @@ class Style
         $sth->bindValue(':styles_id', $this->styles_id);
         return $sth->execute();
     }
+
+
 }

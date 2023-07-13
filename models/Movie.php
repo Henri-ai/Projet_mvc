@@ -99,11 +99,11 @@ class Movie
 
     public static function getAll(): array|false
     {
-        $db = connect();
+        $pdo = Database::getInstance();
         $sql = 'SELECT `movies`.`movies_id`,`movies`.`title`,`movies`.`movie_year`,
                 `movies`.`duration`,`movies`.`picture`,`movies`.`synopsis`,`movies`.`name_actors`,`movies`.`name_producers`
             FROM `movies`;';
-        $sth = $db->query($sql);
+        $sth = $pdo->query($sql);
         return $sth->fetchAll();
     }
 
@@ -125,12 +125,12 @@ class Movie
 
     public static function get($movies_id): mixed
     {
-        $db = connect();
+        $pdo = Database::getInstance();
         $sql = 'SELECT `movies`.`movies_id`,`movies`.`title`,`movies`.`movie_year`,
         `movies`.`duration`,`movies`.`picture`,`movies`.`synopsis`,`movies`.`name_actors`,`movies`.`name_producers`
         FROM `movies`
         WHERE `movies`.`movies_id`=:id;';
-        $sth = $db->prepare($sql);
+        $sth = $pdo->prepare($sql);
         $sth->bindValue(':id', $movies_id);
         $sth->execute();
         return $sth->fetch();
@@ -138,11 +138,11 @@ class Movie
 
     public function update(): bool
     {
-        $db = connect();
+        $pdo = Database::getInstance();
         $sql = 'UPDATE `movies` SET `title`=:title,`movie_year`=:movie_year,`duration`=:duration,
         `picture`=:picture, `synopsis`=:synopsis, `name_actors`=:name_actors, `name_producers`=:name_producers
         WHERE `movies_id`=:id;';
-        $sth = $db->prepare($sql);
+        $sth = $pdo->prepare($sql);
         $sth->bindValue(':id', $this->movies_id);
         $sth->bindValue(':title', $this->title);
         $sth->bindValue(':movie_year', $this->movie_year);
@@ -154,11 +154,11 @@ class Movie
         return $sth->execute();
     }
 
-    public function delete($movies_id): bool
+    public static function delete($movies_id): bool
     {
-        $db = connect();
+        $pdo = Database::getInstance();
         $sql = 'DELETE FROM `movies` WHERE `movies_id`=:id;';
-        $sth = $db->prepare($sql);
+        $sth = $pdo->prepare($sql);
         $sth->bindValue(':id', $movies_id);
         return $sth->execute();
     }
