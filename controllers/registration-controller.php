@@ -38,7 +38,9 @@ if(empty($password) && empty($confirmPassword)){// si l'input du password et de 
     $error["password"] = "Les mots de passe ne correspondent pas";
     $error["confirmPassword"] = "Les mots de passe ne correspondent pas";
 }
+
 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
 }
 
 if (empty($error)) {

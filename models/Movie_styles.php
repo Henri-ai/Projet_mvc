@@ -24,6 +24,9 @@ class Movie_styles
         $this->styles_id = $styles_id;
     }
     
+    /** méthode qui permet d'ajouter l'id du style ainsi que l'id du film
+     * @return bool
+     */
     public function add(): bool
     {
         $pdo = Database::getInstance();
@@ -35,6 +38,11 @@ class Movie_styles
         return $sth->execute();
     } 
 
+    /** méthode qui permet de 
+     * @param mixed $id
+     * 
+     * @return array
+     */
     public static function getByMovie($id):array|false
     {
         $pdo = Database::getInstance();
@@ -63,6 +71,18 @@ class Movie_styles
         $sql = 'SELECT `movies_styles`.`movies_id`,`movies_styles`.`styles_id`
                 FROM `movies_styles`';
         $sth = $pdo->query($sql);
+        return $sth->fetchAll();
+    }
+
+    public static function getByStyle($id){
+        $pdo = Database::getInstance();
+        $sql='SELECT *
+        FROM `movies_styles`
+        INNER JOIN `movies` ON `movies`.`movies_id`=`movies_styles`.`movies_id`
+        WHERE `movies_styles`.`styles_id`= :id ;';
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id',$id,PDO::PARAM_INT);
+        $sth->execute();
         return $sth->fetchAll();
     }
 }

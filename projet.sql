@@ -1,15 +1,18 @@
-CREATE TABLE movies(
-   movies_id INT AUTO_INCREMENT,
-   title VARCHAR(50)  NOT NULL,
-   movie_year DATE NOT NULL,
-   duration TIME NOT NULL,
-   picture VARCHAR(50)  NOT NULL,
-   synopsis TEXT NOT NULL,
-   added_at DATETIME,
-   name_actors TEXT NOT NULL,
-   name_producers TEXT NOT NULL,
-   PRIMARY KEY(movies_id)
+
+
+CREATE TABLE `movies`(
+   `movies_id` INT AUTO_INCREMENT,
+   `title` VARCHAR(50)  NOT NULL,
+   `movie_year` DATE NOT NULL,
+   `duration` TIME NOT NULL,
+   `picture` VARCHAR(50)  NOT NULL,
+   `synopsis` TEXT NOT NULL,
+   `added_at` DATETIME,
+   `name_actors` TEXT NOT NULL,
+   `name_producers` TEXT NOT NULL,
+   PRIMARY KEY(`movies_id`)
 );
+
 
 CREATE TABLE users(
    users_id INT AUTO_INCREMENT,
