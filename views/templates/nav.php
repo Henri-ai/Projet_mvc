@@ -5,28 +5,28 @@
     <div class="collapse navbar-collapse bg-dark mt-3" id="navbarTogglerDemo01">
         <a class="navbar-brand" href="/controllers/home-controller.php"><img class="  logoNav" src="/public/assets/img/popcornLogo150x150.png" alt=""></a> 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-            <?php if( isset($_SESSION['user']) && $_SESSION['user'] !== null ) { 
-                    ?>
-                <a class="nav-link active" aria-current="page" href="/controllers/logout-controller.php">Deconnexion</a>
+            <?php if( isset($_SESSION['user']) && $_SESSION['user'] !== null) { 
+                ?>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/controllers/logout-controller.php">Deconnexion</a>
+                </li>
+                <li>
+                    <a class="nav-link active" aria-current="page" href="/controllers/libraryUser-controller.php">Ma liste</a>
+                </li>
             <?php } else { ?>
-                <a class="nav-link active" aria-current="page" href="/controllers/login-controller.php">Connexion</a>
+                <li>
+                    <a class="nav-link active" aria-current="page" href="/controllers/login-controller.php">Connexion</a>
+                </li>
                 <?php } ?>
-            </li>
-            <li>
-                <a class="nav-link active" aria-current="page" href="/controllers/libraryUser-controller.php">Ma liste</a>
-            </li>
-            <li>
-                <a class="nav-link active" aria-current="page" href="/controllers/dashboard_create-controller.php">Ajouter un film</a>
-            </li>
-            <li>
-                <a class="nav-link active" aria-current="page" href="/controllers/dashboard_listUsers-controller.php">Liste des utilisateurs</a>
-            </li>
+                <?php if(($_SESSION['user']->type==1) ) { ?>
+                    <li>
+                        <a class="nav-link active" aria-current="page" href="/controllers/dashboard_create-controller.php">Ajouter un film</a>
+                    </li>
+                    <li>
+                        <a class="nav-link active" aria-current="page" href="/controllers/dashboard_listUsers-controller.php">Liste des utilisateurs</a>
+                    </li>
+            <?php } ?>
         </ul>
         <h1 class="m-3">Biblio-Flix</h1>
-        <!-- <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
-            <button class="btn btn-outline bg-light me-2" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form> -->
     </div>
 </nav>

@@ -26,9 +26,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //-------------------------------------------------------------------------
     $user=User::getByMail($email, $password);// je recupére l'utilisateur grace à son email
+    
     if ($user!=false) {
         if(password_verify($password, $user->password)) {
             $_SESSION['user']=$user;
+            
+            
             header('location: /controllers/home-controller.php');
             die;
         }

@@ -11,7 +11,7 @@
                     <img class="rounded" src="/public/uploads/movies_pictures/<?=$movie->picture?>" alt="" title="">
                     <div class="titleAndAddList p-3">
                         <h1 class="text-white"><?=$movie->title?></h1>
-                        <a href="" class="btn btn-outline-light"><i class="fa-solid fa-plus-minus fa-bounce" style="color: #b50013;"></i> Liste</a>
+                        <a href="/controllers/libraryUser-controller.php?id=<?=$movie->movies_id?>" class="btn btn-outline-light"><i class="fa-solid fa-plus-minus fa-bounce" style="color: #b50013;"></i> Liste</a>
                     </div>
                 </div>
                 <div class="col movieInformation text-center rounded p-2">
@@ -22,9 +22,13 @@
                     <p class="text-white"><?=$movie->name_actors?></p>
                     <p class="text-white"><?=$movie->movie_year?></p>
                     <p class="text-white"><?=$movie->duration?></p>
-                    <div class="col d-flex justify-content-center">
-                        <a href="/controllers/dashboard_update-controller.php?id=<?=$movie->movies_id?>" class="btn btn-outline-light">Modifier</a>
-                    </div>
+                    <?php
+                    if(($_SESSION['user']->type==1) ) {?>
+                        <div class="col d-flex justify-content-center">
+                            <a href="/controllers/dashboard_update-controller.php?id=<?=$movie->movies_id?>" class="btn btn-outline-light">Modifier</a>
+                        </div>
+                    <?php }
+                    ?>
                 </div>
             </div>
         </div>

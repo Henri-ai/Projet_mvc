@@ -4,6 +4,7 @@ class User
 {
 
     private int $users_id;
+    private int $type;
     private string $pseudo;
     private string $email;
     private string $password;
@@ -20,6 +21,15 @@ class User
     public function setUsersId(int $users_id)
     {
         $this->users_id = $users_id;
+    }
+    //type---------------------------------------------------------------------------------------------------
+    public function getType(): int
+    {
+        return $this->type;
+    }
+    public function setType(int $type)
+    {
+        $this->users_id = $type;
     }
     //pseudo-------------------------------------------------------------------------------------------------
     public function getPseudo(): string
@@ -125,7 +135,7 @@ class User
     {
         $pdo = Database::getInstance();
         $sql = 'SELECT `users`.`users_id`,`users`.`pseudo`,`users`.`email`,
-        `users`.`password`
+        `users`.`password`,`users`.`type`
             FROM `users`
             WHERE `users`.`email`=:email ;';
         $sth = $pdo->prepare($sql);
@@ -174,4 +184,5 @@ class User
         $sth->execute();
         return $sth->fetch();
     }
+
 }

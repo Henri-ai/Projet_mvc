@@ -34,7 +34,7 @@
                             <h5 class="card-title text-white"><?= $search->title ?></h5>
                             <div class="twoBtn d-flex justify-content-around align-items-center">
                                 <a href="/controllers/detail-controller.php?id=<?= $search->movies_id ?>" class="btn btn-outline-light ">Détails</a>
-                                <a href="/controllers/libraryUser-controller.php" class="btn btn-outline-light"><i class="fa-solid fa-plus-minus" style="color: #b50013;"></i> Liste</a>
+                                <a href="/controllers/libraryUser-controller.php?id=<?=$search->movies_id ?>" class="btn btn-outline-light"><i class="fa-solid fa-plus-minus" style="color: #b50013;"></i> Liste</a>
                             </div>
                         </div>
                     </div>

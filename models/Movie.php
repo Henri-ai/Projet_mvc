@@ -101,7 +101,8 @@ class Movie
     {
         $pdo = Database::getInstance();
         $sql = 'SELECT `movies`.`movies_id`,`movies`.`title`,`movies`.`movie_year`,
-                `movies`.`duration`,`movies`.`picture`,`movies`.`synopsis`,`movies`.`name_actors`,`movies`.`name_producers`
+                `movies`.`duration`,`movies`.`picture`,`movies`.`synopsis`,
+                `movies`.`name_actors`,`movies`.`name_producers`
             FROM `movies`;';
         $sth = $pdo->query($sql);
         return $sth->fetchAll();
@@ -110,7 +111,8 @@ class Movie
     public function add(): bool
     {
         $pdo = Database::getInstance();
-        $sql = 'INSERT INTO `movies` (`title`,`movie_year`,`duration`,`picture`,`synopsis`,`name_actors`,`name_producers`)
+        $sql = 'INSERT INTO `movies` (`title`,`movie_year`,`duration`,
+        `picture`,`synopsis`,`name_actors`,`name_producers`)
         VALUES (:title, :movie_year, :duration, :picture, :synopsis, :name_actors, :name_producers);';
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':title', $this->title);

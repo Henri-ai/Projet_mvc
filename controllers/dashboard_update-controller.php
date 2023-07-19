@@ -8,8 +8,6 @@ SessionFlash::start();
 
 try {
     $movies_id = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
-    $styles=Style::getAll();
-
     if (isset($_GET['action'])) {
         if ($_GET['action']=='delete') {
             $styleDelete=Movie_styles::delete($movies_id);
@@ -18,7 +16,8 @@ try {
             SessionFlash::setMessage('film supprimé');
         }
     } 
-    
+    $styles=Style::getAll();
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // title------------------------------------------------------------------------------------------------
         $titleMovie = trim(filter_input(INPUT_POST, 'titleMovie', FILTER_SANITIZE_SPECIAL_CHARS));
