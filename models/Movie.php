@@ -164,4 +164,5 @@ class Movie
         $sth->bindValue(':id', $movies_id);
         return $sth->execute();
     }
+
 }

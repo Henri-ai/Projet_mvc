@@ -1,7 +1,11 @@
 <?php
 require_once __DIR__ . '/../models/User.php';
 require_once __DIR__ . '/../models/Movie_users.php';
+require_once __DIR__ . '/../models/Movie_users.php';
+require_once __DIR__ . '/../models/Movie.php';
+require_once __DIR__. '/../helpers/SessionFlash.php';
 SessionFlash::start();
+
 
 if (isset($_GET['id'])) {
         $movie_id = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));

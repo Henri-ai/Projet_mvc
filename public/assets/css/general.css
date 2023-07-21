@@ -56,8 +56,6 @@ footer {
 }
 
 
-/* detail page */
-
 .movieInformation{
     background-color: #212529;
 }
@@ -75,6 +73,26 @@ footer {
     
 }
 
-.alreadySeen{
-    border-left: thick double #ffffff;
+.cardLibrary{
+    background-color:black;
+    transition: transform .1s;
+
 }
+
+.cardLibrary:hover{
+    transform: scale(1.1);
+}
+
+.cardLink{
+    text-decoration: none;
+}
+
+.fa-gear{
+    transition-duration: 0.4s;
+    transition-property:transform;
+}
+
+.fa-gear:hover{
+    transform: rotate(360deg);
+}
+

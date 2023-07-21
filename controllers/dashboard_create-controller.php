@@ -3,7 +3,8 @@ require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../models/Style.php';
 require_once __DIR__ . '/../models/Movie.php';
 require_once __DIR__ . '/../models/Movie_styles.php';
-
+require_once __DIR__. '/../helpers/SessionFlash.php';
+SessionFlash::start();
 $styles = Style::getAll();
 try {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -105,7 +106,9 @@ try {
             }
             if ($infoMovieSaved === true && $isStyleSaved === true) {
                 $pdo->commit(); // Valide la transaction et exécute toutes les requetes
-                $succes['message'] = 'Film ajouter !';
+                header('location: /controllers/home-controller.php');
+                SessionFlash::setMessage('Film ajouté');
+                // $succes['message'] = 'Film ajouter !';
             } else {
                 $pdo->rollback(); // Annulation de toutes les requêtes exécutées avant la levée de l'exception
             }
