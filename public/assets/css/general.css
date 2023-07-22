@@ -41,25 +41,22 @@ footer {
     height: 10vh;
     background-color: #212529;
 }
-/* button card */
+/* button add list card */
 
 .btnAddList{
     border:none;
     background: none;
 } 
 
-/* button top page */
+/* button top page *****************************************************/
 
 .btnTopPage{
     background: none;
     border:none;
+    height: 9vh
 }
 
-
-.movieInformation{
-    background-color: #212529;
-}
-
+/* erreur champ de formulaire ***********************************/
 .error{
     color:red;
 }
@@ -68,11 +65,7 @@ footer {
     border: 1px solid red;
 }
 
-.succes{
-    color: green;
-    
-}
-
+/* card library ************************************************/
 .cardLibrary{
     background-color:black;
     transition: transform .1s;
@@ -87,6 +80,7 @@ footer {
     text-decoration: none;
 }
 
+/* icone préference*************************************** */
 .fa-gear{
     transition-duration: 0.4s;
     transition-property:transform;

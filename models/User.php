@@ -95,6 +95,9 @@ class User
         $this->deleted_at = $deleted_at;
     }
 
+    /**methode qui permet d'enregistrer un utilisateur en bdd
+     * @return bool
+     */
     public function add(): bool
     {
         $pdo = Database::getInstance();
@@ -108,6 +111,9 @@ class User
     }
 
 
+    /**methode qui affiche tous les utilisateurs enregistrés
+     * @return array
+     */
     public static function getAll(): array|false
     {
         $pdo = Database::getInstance();
@@ -118,6 +124,11 @@ class User
         return $sth->fetchAll();
     }
 
+    /**methode qui retourne un utilisateur precis via l'id
+     * @param int $users_id
+     * 
+     * @return mixed
+     */
     public static function get(int $users_id): mixed
     {
         $pdo = Database::getInstance();
@@ -131,6 +142,11 @@ class User
         return $sth->fetch();
     }
 
+    /**methode qui permet de retrouver un utilisateur via l'email
+     * @param mixed $email
+     * 
+     * @return mixed
+     */
     public static function getByMail($email): mixed
     {
         $pdo = Database::getInstance();
@@ -144,6 +160,9 @@ class User
         return $sth->fetch();
     }
 
+    /**methode qui permet de mettre à jour le profil de l'utilisateur
+     * @return bool
+     */
     public function updateProfil(): bool
     {
         $pdo = Database::getInstance();
@@ -155,6 +174,9 @@ class User
         return $sth->execute();
     }
 
+    /**methode qui permet de modifier le mot de passe de l'utilisateur
+     * @return bool
+     */
     public function updatePassword(): bool
     {
         $pdo = Database::getInstance();
@@ -166,6 +188,11 @@ class User
         return $sth->execute();
     }
 
+    /**methode qui permet de supprimer un utilisateur via l'id
+     * @param mixed $users_id
+     * 
+     * @return bool
+     */
     public static function delete($users_id): bool
     {
         $pdo = Database::getInstance();
@@ -175,7 +202,12 @@ class User
         return $sth->execute();
     }
 
-    public function isExist(){
+
+    /**verifie si l'email existe en bdd
+     * @return mixed
+     */
+    public function isExist(): mixed
+    {
         $pdo = Database::getInstance();
         $sql=('SELECT `users`.`email` 
         FROM `users` WHERE `users`.`email`=:email');

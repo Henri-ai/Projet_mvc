@@ -34,7 +34,7 @@ try {
             $user->updateProfil();
         }
         header('location: /controllers/libraryUser-controller.php');
-        SessionFlash::setMessage('Votre profil à bien été mis à jour');
+        SessionFlash::setMessage('Votre profil a bien été mis à jour');
     }
 
 } catch (\Throwable $th) {

@@ -13,14 +13,12 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../public/assets/css/general.css">
-    <title>BiblioFlix - Liste des Films</title>
+    <title>BiblioFlix</title>
 </head>
     <body>
         <header>
             <?php 
             include __DIR__. '/nav.php';
             ?>
-            
-
         </header>
-    <main>
+<main>

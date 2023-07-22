@@ -28,7 +28,7 @@ try {
         $user->setPassword($passwordHash);
         $user->updatePassword();
     header('location: /controllers/libraryUser-controller.php');
-    SessionFlash::setMessage('Votre profil à bien été mis à jour');
+    SessionFlash::setMessage('Votre mot de passe a été modifié');
     }
     
 }

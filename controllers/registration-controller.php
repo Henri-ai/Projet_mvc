@@ -3,6 +3,7 @@ require_once __DIR__. '/../config/config.php';
 require_once __DIR__. '/../models/User.php';
 require_once __DIR__. '/../helpers/SessionFlash.php';
 SessionFlash::start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // pseudo-------------------------------------------------------------------------------------
@@ -61,22 +62,7 @@ if (empty($error)) {
     
 
 }
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
 
 include __DIR__. '/../views/templates/header.php';
 include __DIR__. '/../views/users/registration.php';

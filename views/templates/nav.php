@@ -4,7 +4,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
     <div class="collapse navbar-collapse bg-dark mt-3" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="/controllers/home-controller.php"><img class="  logoNav" src="/public/assets/img/popcornLogo150x150.png" alt=""></a> 
+        <a class="navbar-brand" href="/controllers/home-controller.php"><img class="logoNav" src="/public/assets/img/popcornLogo150x150.png" alt=""></a> 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <?php if( isset($_SESSION['user']) && $_SESSION['user'] !== null) { 
                 ?>

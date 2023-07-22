@@ -55,31 +55,6 @@ try {
                 $error['duration'] = 'Veuillez saisir une durée correct (ex : 2:30)';
             }
         }
-
-        // picture----------------------------------------------------------------------------------------------
-        
-        if (($_FILES['picture']['error'] == 4)) {//erreur numero 4 indique que le champ est vide
-            $error['picture'] = 'Veuillez ajouter l\'affiche du film';
-        } 
-            if (isset($_FILES['picture'])) { //
-                $picture = $_FILES['picture'];
-                if (!empty($picture['tmp_name'])) {
-                    if ($picture['error'] > 0) { //si le code erreur est supérieur a 0 -> message d'erreur
-                        $error['picture'] = "Erreur lors du transfert de l'image";
-                    } else {
-                        if (!in_array($picture['type'], AUTHORIZED_IMAGE_FORMAT)) {
-                            $error['picture'] = "l'image n'est pas au bon format";
-                        } else {
-                            $extension = pathinfo($picture['name'], PATHINFO_EXTENSION);
-                            $from = $picture['tmp_name']; // l'emplacement de l'image temporaire
-                            $fileName = uniqid('img_') . '.' . $extension; // créer un id unique  avec l'extension (ex'jpeg')
-                            $to = __DIR__ . '/../public/uploads/movies_pictures/' . $fileName; // deplace l'image vers le dossier voulu
-                            move_uploaded_file($from, $to);
-                        }
-                    }
-                }
-            }
-        
         // style/categorie---------------------------------------------------------------------------------------
         $selectedStyle = filter_input(INPUT_POST, 'style', FILTER_SANITIZE_NUMBER_INT, FILTER_REQUIRE_ARRAY);
         if (empty($selectedStyle)) {
@@ -102,7 +77,6 @@ try {
             $movie->setNameProducers($director);
             $movie->setMovieYear($releaseDate);
             $movie->setDuration($duration);
-            $movie->setPicture($fileName);
             $movie->setSynopsis($synopsis);
             // modification du film dans la bdd
             $infoMovieSaved = $movie->update();

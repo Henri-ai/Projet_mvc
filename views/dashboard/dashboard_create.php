@@ -2,7 +2,6 @@
     <div class="col-12">
         <section>
             <h1 class="text-white d-flex justify-content-center py-5">Ajout de film</h1>
-            <small class="form-text d-flex justify-content-center fs-2 succes " name="addMovieSucces"><?= $succes['message'] ?? '' ?></small>
             <form autocomplete="off" method="post" id="formUser" enctype="multipart/form-data" novalidate>
                 <!-- title -->
                 <div class="row">
@@ -44,7 +43,7 @@
                     <!-- picture -->
                     <div class="col-lg-6">
                         <label for="picture" class="form-label text-white">Affiche du film * :</label>
-                        <input type="file" name="picture" class="form-control <?= isset($error['picture']) ? 'errorField' : '' ?>" id="picture" accept=".png, .jpg, .jpeg">   
+                        <input type="file" name="picture" class="form-control <?= isset($error['picture']) ? 'errorField' : '' ?>" id="picture" accept=".png, .jpg, .jpeg">
                         <small id="pictureError" class="form-text error"><?= $error['picture'] ?? '' ?></small>
                     </div>
                 </div>
@@ -56,7 +55,7 @@
                         foreach ($styles as $key => $value) {
                         ?>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="style[]" id="style<?= $key ?>" value="<?= $value->styles_id ?? ''?>">
+                                <input class="form-check-input" type="checkbox" name="style[]" id="style<?= $key ?>" value="<?= $value->styles_id ?? '' ?>">
                                 <label class="form-check-label" for="style<?= $key ?>">
                                     <?= $value->label ?>
                                 </label>

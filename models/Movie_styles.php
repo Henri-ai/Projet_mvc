@@ -38,7 +38,7 @@ class Movie_styles
         return $sth->execute();
     } 
 
-    /** méthode qui permet de 
+    /** methode qui permet de récuperer les styles d'un film par rapport a son id
      * @param mixed $id
      * 
      * @return array
@@ -56,6 +56,11 @@ class Movie_styles
         return $sth->fetchAll();
     }
     
+    /**methode qui permet de supprimer l'id d'un film
+     * @param mixed $movies_id
+     * 
+     * @return bool
+     */
     public static function delete($movies_id): bool
     {
         $pdo = Database::getInstance();
@@ -65,16 +70,25 @@ class Movie_styles
         return $sth->execute();
     }
 
+    /**methode qui permet de récupèrer les films associer a leurs style via l'id
+     * @return array
+     */
     public static function getAll():array|false
     {
         $pdo = Database::getInstance();
         $sql = 'SELECT `movies_styles`.`movies_id`,`movies_styles`.`styles_id`
-                FROM `movies_styles`';
+                FROM `movies_styles`;';
         $sth = $pdo->query($sql);
         return $sth->fetchAll();
     }
 
-    public static function getByStyle($id){
+    /**methode qui permet de retourner tout les films qui on un certain style par rapport a l'id du style
+     * @param mixed $id
+     * 
+     * @return array
+     */
+    public static function getByStyle($id):array|false
+    {
         $pdo = Database::getInstance();
         $sql='SELECT *
         FROM `movies_styles`

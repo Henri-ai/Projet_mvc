@@ -1,5 +1,5 @@
 <div class="container d-flex justify-content-center">
-    <div class="col-lg-4 ">
+    <div class="col-12 col-lg-4 ">
         <section class="d-flex row align-items-center">
             <div class="form">
                 <h1 class="text-white text-center">Connexion</h1>
@@ -17,7 +17,6 @@
                         <input type="email" name="email" class="form-control <?= isset($error['email']) ? 'errorField' : '' ?>" id="email" aria-describedby="email" value="<?= $email ?? '' ?>" required>
                         <small id="emailError" class="form-text error"><?= $error['email'] ?? '' ?></small>
                     </div>
-
                     <div class="mb-3">
                         <label for="password" class="form-label text-white">Mot de passe :</label>
                         <input type="password" name="password" class="form-control <?= isset($error['email']) ? 'errorField' : '' ?>" id="password" aria-describedby="password" value="<?= $password ?? '' ?>" required>

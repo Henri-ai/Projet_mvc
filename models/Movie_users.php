@@ -56,21 +56,12 @@ class Movie_users
         return $sth->execute();
     }
 
-    /**methode qui permet de verifier si l'utilisateur a déjà enregistré le film en base
-     * @return mixed
+    /**methode qui permet de supprimer le film que l'utilisateur a ajouter à sa liste personnalisée
+     * @param mixed $movies_id
+     * @param mixed $users_id
+     * 
+     * @return bool
      */
-    public function isExist():mixed
-    {
-        $pdo = Database::getInstance();
-        $sql='SELECT * 
-        FROM `movies_users`
-        WHERE `movies_users`.`movies_id`=:movies_id;';
-        $sth=$pdo->prepare($sql);
-        $sth->bindValue(':movies_id',$this->movies_id);
-        $sth->execute();
-        return $sth->fetch();
-    }
-
     public static function delete($movies_id,$users_id): bool
     {
         $pdo = Database::getInstance();

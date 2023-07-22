@@ -1,5 +1,5 @@
 <div class="container d-flex justify-content-center">
-    <div class="col-lg-4 ">
+    <div class="col-12 col-lg-4">
         <section class="d-flex row align-items-center">
             <div class="form">
                 <h1 class="text-white text-center">Nouveau mot de passe</h1>
@@ -7,8 +7,7 @@
                     <div class="mb-3">
                         <label for="updatePassword" class="form-label text-white">Nouveau mot mot de passe :</label>
                         <input type="password" name="updatePassword" class="form-control <?= isset($error['updatePassword']) ? 'errorField' : '' ?>" id="updatePassword" aria-describedby="updatePassword" value="<?= $updatePassword ?? '' ?>" required>
-                        <small id="updatePasswordError" class="form-text error"><?= $error['updatePassword'] ?? '' //coalescence si $error existe on l'affiche sinon ''(vide)
-                                                                                ?></small>
+                        <small id="updatePasswordError" class="form-text error"><?= $error['updatePassword'] ?? '' ?></small>
                     </div>
                     <div class="mb-3">
                         <label for="updatePasswordConfirm" class="form-label text-white">Confirmer votre nouveau mot de passe :</label>
@@ -17,7 +16,7 @@
                     </div>
                     <div class="btnValidate">
                         <button type="submit" class="btn btn-outline-light">Modifier</button>
-                        <a class="text-decoration-none btn btn-outline-light" role="button" href="/controllers/preference-controller.php?id=<?=$user->users_id?>">Retour</a>
+                        <a class="text-decoration-none btn btn-outline-light" role="button" href="/controllers/preference-controller.php?id=<?= $user->users_id ?>">Retour</a>
                     </div>
                 </form>
             </div>

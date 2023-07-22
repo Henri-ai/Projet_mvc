@@ -4,7 +4,7 @@
             <a class="text-white text-decoration-none" href="#">Politique de confidentialité</a>
             <a class="text-white text-decoration-none" href="#">Mentions légales</a>
             <div class="divBtnTop">
-                <button class="btnTopPage" type="button"><a href="/controllers/home-controller.php"><img class="logoNav" src="/public/assets/img/popcornLogo150x150.png" alt="" title=""></a></button> 
+            <a class="navbar-brand" href="/controllers/home-controller.php"><img class="btnTopPage" src="/public/assets/img/popcornLogo150x150.png" alt=""></a> 
             </div>
         </div>
     </footer>

@@ -26,6 +26,9 @@ class Style
     }
 
 
+    /**methode qui retourne tous les styles
+     * @return array
+     */
     public static function getAll(): array|false
     {
         $pdo = Database::getInstance();
@@ -34,16 +37,5 @@ class Style
         $sth = $pdo->query($sql);
         return $sth->fetchAll();
     }
-
-    public function add(): bool
-    {
-        $pdo = Database::getInstance();
-        $sql = 'INSERT INTO `styles` (`styles_id`)
-        VALUES (:styles_id);';
-        $sth = $pdo->prepare($sql);
-        $sth->bindValue(':styles_id', $this->styles_id);
-        return $sth->execute();
-    }
-
 
 }

@@ -97,6 +97,9 @@ class Movie
     }
 
 
+    /**methode qui permet de renvoyer tous les films enregistrer en bdd
+     * @return array
+     */
     public static function getAll(): array|false
     {
         $pdo = Database::getInstance();
@@ -108,6 +111,9 @@ class Movie
         return $sth->fetchAll();
     }
 
+    /**methode qui permet d'ajouter un film en bdd
+     * @return bool
+     */
     public function add(): bool
     {
         $pdo = Database::getInstance();
@@ -125,6 +131,11 @@ class Movie
         return $sth->execute();
     }
 
+    /**methode qui permet de retourner un film par rapport à son id
+     * @param mixed $movies_id
+     * 
+     * @return mixed
+     */
     public static function get($movies_id): mixed
     {
         $pdo = Database::getInstance();
@@ -138,24 +149,31 @@ class Movie
         return $sth->fetch();
     }
 
+    /**methode qui permet de mettre à jour les informations d'un film
+     * @return bool
+     */
     public function update(): bool
     {
         $pdo = Database::getInstance();
         $sql = 'UPDATE `movies` SET `title`=:title,`movie_year`=:movie_year,`duration`=:duration,
-        `picture`=:picture, `synopsis`=:synopsis, `name_actors`=:name_actors, `name_producers`=:name_producers
+        `synopsis`=:synopsis, `name_actors`=:name_actors, `name_producers`=:name_producers
         WHERE `movies_id`=:id;';
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':id', $this->movies_id);
         $sth->bindValue(':title', $this->title);
         $sth->bindValue(':movie_year', $this->movie_year);
         $sth->bindValue(':duration', $this->duration);
-        $sth->bindValue(':picture', $this->picture);
         $sth->bindValue(':synopsis', $this->synopsis);
         $sth->bindValue(':name_actors', $this->name_actors);
         $sth->bindValue(':name_producers', $this->name_producers);
         return $sth->execute();
     }
 
+    /**methode qui permet de supprimer un film
+     * @param mixed $movies_id
+     * 
+     * @return bool
+     */
     public static function delete($movies_id): bool
     {
         $pdo = Database::getInstance();

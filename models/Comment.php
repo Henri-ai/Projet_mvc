@@ -58,24 +58,30 @@ class Comment
         $this->movies_id = $movies_id;
     }
 
+    /**methode qui permet d'ajouter un commentaire en bdd
+     * @return bool
+     */
     public function add(): bool
     {
-        $db = connect();
+        $pdo = Database::getInstance();
         $sql = 'INSERT INTO `comments` (`comment`,`movies_id`,`users_id`)
         VALUES (:comment, :movies_id, :users_id);';
-        $sth = $db->prepare($sql);
+        $sth = $pdo->prepare($sql);
         $sth->bindValue(':comment', $this->comment);
         $sth->bindValue(':movies_id', $this->movies_id);
         $sth->bindValue(':users_id', $this->users_id);
         return $sth->execute();
     }
 
+    /**methode qui permert d'afficher tout les commentaires
+     * @return array
+     */
     public static function getAll(): array|false
     {
-        $db = connect();
+        $pdo = Database::getInstance();
         $sql = 'SELECT `comments`.`comments_id`,`comments`.`comment`
             FROM `comments`;';
-        $sth = $db->query($sql);
+        $sth = $pdo->query($sql);
         return $sth->fetchAll();
     }
 }
